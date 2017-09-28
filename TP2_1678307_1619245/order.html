@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>OnlineShop - Commande</title>
+</head>
+<body>
+  <header>
+    <!-- LOGO -->
+    <a href="index.html">
+      <img src="assets/img/logo.svg" alt="Page d'accueil!">
+    </a>
+
+    <!-- NAVIGATION MENU -->
+	<nav>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="products.html">Produits</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="shopping-cart.html">Panier</a></li>
+      </ul>
+	</nav>
+  </header>
+
+  <main>
+    <article>
+      <h1>Commande</h1>
+	  <!-- FORMULAIRE DE CONTACT -->
+      <form action="confirmation.html">
+        <section>
+          <h2>Contact</h2>
+          <label for="first-name">Prénom</label>
+          <input type="text" id="first-name" name="first-name" required><br>
+          <label for="last-name">Nom</label>
+          <input type="text" id="last-name" name="last-name" required><br>
+          <label for="email">Adresse courriel</label>
+          <input type="email" id="email" name="email" required><br>
+          <label for="phone">Numéro de téléphone</label>
+          <input type="tel" id="phone" name="phone" required><br>				
+        </section>
+	  
+	    <!-- FORMULAIRE DE PAIEMENT -->
+        <section>
+          <h2>Paiement</h2>
+          <label for="credit-card">Numéro de carte de crédit</label>
+          <input type="text" id="credit-card" name="credit-card" required><br>
+          <label for="credit-card-expiry">Expiration (mm/aa</label>
+          <input type="text" id="credit-card-expiry" name="credit-card-expiry" required><br>				
+        </section>
+        <button type="submit">Payer</button>
+      </form>
+    </article>
+  </main>
+
+  <footer>
+    <p>Blanchet-Lecomte, Rafael, #1678307 <br> Joseph Ming Chong He, #1619245</p>
+  </footer>
+
+</body>
+</html>
