@@ -32,16 +32,16 @@
   </header>
 
   <main>
-    <section>
+    <section id="products_side_bars">
       <!-- CATEGORIES SIDEBAR -->
-      <section
+      <section>
         <h2>Catégories</h2>
 		<div id="product-categories">
           <button type="button">Appareils photo</button>
           <button type="button">Consoles</button>
           <button type="button">Écrans</button>
           <button type="button">Ordinateurs</button>
-          <button type="button">Tous les produits</button>
+          <button class="selected" type="button">Tous les produits</button>
 		</div>
       </section> 
 
@@ -49,7 +49,7 @@
       <section>
         <h2>Classement</h2>
 		<div id="product-criteria">
-          <button type="button">Prix (bas-haut)</button>
+          <button  class="selected" type="button">Prix (bas-haut)</button>
           <button type="button">Prix (haut-bas)</button>
           <button type="button">Nom (A-Z)</button>
           <button type="button">Nom (Z-A)</button>
@@ -58,16 +58,17 @@
 	</section>
 	
     <!-- MAIN PANNEL -->
-	<article>
+	<article id="products_main_pannel">
       <h1>Produits</h1>
       <p>6 produits</p>
+	  <br class="clear">
 	  
 	  <div id="products-list">
         <article>
           <a href="product.html">
             <h3>Apple TV</h3>
             <img src="assets/img/apple-tv.png" alt="Apple TV">
-            <p>249.99 $</p>
+            <p>Prix 249.99 $</p>
           </a>
         </article>
 	  
@@ -75,7 +76,7 @@
           <a href="product.html">
             <h3>Canon EOS 5D Mark II</h3>
             <img src="assets/img/camera-1.png" alt="Canon EOS 5D Mark II">
-            <p>2999.99 $</p>
+            <p>Prix 2999.99 $</p>
           </a>
         </article>
 	  
@@ -83,7 +84,7 @@
           <a href="product.html">
             <h3>Nikon D7000</h3>
             <img src="assets/img/camera-2.png" alt="Nikon D7000">
-            <p>549.99 $</p>
+            <p>Prix 549.99 $</p>
           </a>
         </article>
 
@@ -91,7 +92,7 @@
           <a href="product.html">
             <h3>Canon PowerShot SD1300</h3>
             <img src="assets/img/camera-3.png" alt="Canon PowerShot SD1300">
-            <p>299.99 $</p>
+            <p>Prix 299.99 $</p>
           </a>
         </article>	  
 
@@ -99,7 +100,7 @@
           <a href="product.html">
             <h3>Portable</h3>
             <img src="assets/img/laptop-1.png" alt="Portable">
-            <p>699.99 $</p>
+            <p>Prix 699.99 $</p>
           </a>
         </article>
 	  
@@ -107,7 +108,7 @@
           <a href="product.html">
             <h3>Portable professionnel</h3>
             <img src="assets/img/laptop-2.png" alt="Portable professionnel">
-            <p>599.99 $</p>
+            <p>Prix 599.99 $</p>
           </a>
         </article>
 	  </div>
