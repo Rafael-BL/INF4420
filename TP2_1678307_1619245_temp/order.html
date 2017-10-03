@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <link rel="stylesheet" type="text/css"
+  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+  <meta charset="UTF-8">
+  <title>OnlineShop - Commande</title>
+</head>
+<body>
+  <header>
+    <!-- LOGO -->
+    <a href="index.html">
+      <img src="assets/img/logo.svg" alt="Page d'accueil!">
+    </a>
+
+    <!-- NAVIGATION MENU -->
+	<nav>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="products.html">Produits</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <a class="shopping-cart" href="./shopping-cart.html" title="Panier">
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+            <i class="fa fa-shopping-cart fa-stack-1x"></i>
+          </span>
+          <span class="count">3</span>
+        </a>
+      </ul>
+	</nav>
+  </header>
+
+  <main id=order>
+    <article>
+      <h1>Commande</h1>
+	  <!-- FORMULAIRE DE CONTACT -->
+      <form action="confirmation.html">
+        <section>
+          <h2>Contact</h2>
+          <!-- 50% Colonne gauche --> 
+          <div class="col-1">    
+            <label for="first-name">Prénom</label><br>
+            <input class="form-control" type="text" id="first-name" name="first-name" placeholder="Prénom" required><br>
+            <label for="email">Adresse courriel</label><br>
+            <input class="form-control" type="email" id="email" name="email" placeholder="Adresse courriel" required><br>
+          </div> 
+          <!-- 50% Colonne droite -->
+          <div class="col-1">    
+            <label for="last-name">Nom</label><br>
+            <input class="form-control" type="text" id="last-name" name="last-name" placeholder="Nom" required><br>
+
+            <label for="phone">Numéro de téléphone</label><br>
+            <input class="form-control" type="tel" id="phone" name="phone" placeholder="###-###-####" required><br>	
+          </div> 
+        </section>
+	  
+	    <!-- FORMULAIRE DE PAIEMENT -->
+        <section>
+          <h2>Paiement</h2>
+          <!-- 50% Colonne gauche --> 
+          <div class="col-1">    
+            <label for="credit-card">Numéro de carte de crédit</label><br>
+            <input class="form-control" type="text" id="credit-card" name="credit-card" placeholder="**** **** **** ****" required><br>
+          </div> 
+          <!-- 50% Colonne droite -->
+          <div class="col-1">    
+            <label for="credit-card-expiry">Expiration (mm/aa</label><br>
+            <input class="form-control" type="text" id="credit-card-expiry" name="credit-card-expiry" placeholder="mm/aa" required><br>
+          </div> 		
+        </section>
+        <button class="button" type="submit">Payer</button>
+      </form>
+    </article>
+  </main>
+
+  <footer>
+    <p>Blanchet-Lecomte, Rafael, #1678307 <br> Ming Chong He, Joseph, #1619245</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <link rel="stylesheet" type="text/css"
+  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+  <meta charset="UTF-8">
+  <title>OnlineShop - Panier</title>
+</head>
+<body>
+  <header>
+    <!-- LOGO -->
+    <a href="index.html">
+      <img src="assets/img/logo.svg" alt="Page d'accueil!">
+    </a>
+
+    <!-- NAVIGATION MENU -->
+	<nav>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="products.html">Produits</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <a class="shopping-cart" href="./shopping-cart.html" title="Panier">
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+            <i class="fa fa-shopping-cart fa-stack-1x"></i>
+          </span>
+          <span class="count">3</span>
+        </a>
+      </ul>
+	</nav>
+  </header>
+	
+  <main id=shopping-cart>
+    <section>
+    <h1>Panier</h1>
+      <!-- PANIER DE COMMANDE -->
+      <table>
+        <thead>
+            <tr>
+              <th></th>
+              <th>Produit</th> 
+              <th>Prix unitaire</th>
+              <th>Quantité</th>
+              <th>Prix</th>
+            </tr>
+        </thead>
+		
+        <tbody>
+          <tr>
+            <td><button>x</button></td>
+            <td><a href="./product.html">Apple TV</a></td> 
+            <td>249.99 $</td>
+            <td>
+              <button>-</button>
+              2
+              <button>+</button>						
+            </td>
+            <td>499.98 $</td>
+          </tr>
+		
+          <tr>
+            <td><button>x</button></td>
+            <td><a href="./product.html">Canon EOS 5D Mark II</a></td> 
+            <td>2999.99 $</td>
+            <td>
+              <button>-</button>
+              1
+              <button>+</button>						
+            </td>
+            <td>2999.99 $</td>
+          </tr>
+		
+          <tr>
+            <td><button>x</button></td>
+            <td><a href="./product.html">Nikon D7000</a></td> 
+            <td>549.99 $</td>
+            <td>
+              <button>-</button>
+              2
+              <button>+</button>						
+            </td>
+            <td>1099.98 $</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>Total: 4599.95 $</p>
+      <button class="button" type="reset">Vider le panier</button>
+      <a class="button" href="order.html">Commander</a>
+    </section>
+  </main>
+
+
+  <footer>
+    <p>Blanchet-Lecomte, Rafael, #1678307 <br> Ming Chong He, Joseph, #1619245</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,402 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color:black;
+  margin-top:60px;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-height: 100%;
+  border-bottom: 70px;
+  max-width: 1200px;
+}
+
+/*HEADER*/
+/*QUESTIONS*/
+/*
+//Comment on aligne verticalement le nav bar?
+//Comment on place en bas a droite le chiffre 3 et un background rond et rouge? Fait
+//Sticky header ok?
+*/
+header { 
+  max-width: 1200px;
+  max-height: 60px;
+  background-color: #14597f;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #0b2d3d;
+}
+
+header img {
+  position: absolute;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+header nav {
+  float: right;
+  position: relative;
+}
+
+header li {
+  display: inline-block;
+  vertical-align: middle;
+  color: white;
+}
+
+header li a {
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+}
+
+header .shopping-cart {
+	color: #14597f;
+	position: relative;
+}
+
+header .shopping-cart .count {
+	background: #d9534f;
+  color:white;
+	position: absolute;
+	bottom: -12px;
+  right: -4px;
+  text-align: center;
+  border-radius: 20px 20px 20px 20px;
+  padding:2px 5px;
+  font-size:10px;
+}
+
+header a.active{
+  background-color: #1fb5e9;
+  border-radius: 4px;
+}
+
+
+/*FOOTER*/
+footer {
+  max-width: 1200px;
+  height: 70px;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #eee;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #ccc;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+footer p {
+	text-align: center;
+}
+
+
+/*INDEX.HTML*/
+/*QUESTIONS*/
+/*
+//Is it ok to use a div left_box?
+*/
+#index #left_box {
+  display: inline-block;
+  float: left;
+}
+
+#index img{
+  display: inline-block;
+  float: right;
+  width: 40%;
+  height: 40%;
+} 
+
+/* J'ai créé .button plus bas pour regrouper le style
+#index .button {
+  float:left;
+  position: absolute;
+  margin-top: 10px;
+  background-color: #14597f;
+  border-color: #0b2d3d;
+  color: white;
+  border: 1px;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  transition-property: background-color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
+}
+
+#index .button:hover{
+  background-color: #1fb5e9;
+}
+*/
+
+
+/*PRODUCTS.HTML*/
+/*QUESTIONS*/
+/*
+//Can we simply use a big div for butons (product_side_bars) instead of 2 (categories and criteria)?
+//Is selected dosnt change until javascript?
+//Divide into 3 columns?
+*/
+/*Side Bar*/
+#products_side_bars {
+  width: 20%;
+  padding-right: 5%;
+  display: inline-block;
+  float: left;
+}
+
+#product-categories button{
+  background-color: #fff;
+  border: 1px solid #999;
+  padding: 10px;
+  width: 100%;
+  display: block;
+  outline: 0;
+  transition-property: background-color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
+}
+#product-categories button:first-child {
+  border-radius: 4px 4px 0 0;
+}
+#product-categories button:last-child {
+  border-radius: 0 0 4px 4px;
+}
+#product-categories button:not(:last-child) {
+  border-bottom: none;
+}
+#product-categories button:hover {
+  background-color: #f3f3f3;
+}
+#product-categories .selected {
+  background-color: #ddf2fb;
+}
+
+#product-criteria button{
+  background-color: #fff;
+  border: 1px solid #999;
+  padding: 10px;
+  width: 100%;
+  display: block;
+  outline: 0;
+  transition-property: background-color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
+}
+#product-criteria button:first-child {
+  border-radius: 4px 4px 0 0;
+}
+#product-criteria button:last-child {
+  border-radius: 0 0 4px 4px;
+}
+#product-criteria button:not(:last-child) {
+  border-bottom: none;
+}
+#product-criteria button:hover {
+  background-color: #f3f3f3;
+}
+
+#product-criteria .selected {
+  background-color: #ddf2fb;
+}
+
+/*Main Pannel*/
+#products_main_pannel {
+  width: 75%;
+  display: inline-block;
+  float: right
+}
+
+#products_main_pannel h1 {
+  display: inline-block;
+  float: left;
+}
+
+#products_main_pannel p {
+  display: inline-block;
+  float: right;
+}
+
+#products_main_pannel .clear {
+  clear: both;
+}
+
+#products_main_pannel #products-list article{
+  display: inline;
+  float: left;
+  width: 31%;
+  margin: 1%;
+  border: 1px solid #999;
+  border-radius: 4px;
+  transition-property: background-color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
+}
+
+#products_main_pannel #products-list article:hover{
+  background-color: #f3f3f3;
+}
+
+#products_main_pannel #products-list img{
+  width: 80%;
+  height: 80%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#products_main_pannel #products-list h3{
+  text-decoration: none;
+  color: black;
+  margin-left: 5px;
+}
+
+#products_main_pannel #products-list a:hover, a:visited, a:link, a:active {
+    text-decoration: none;
+}
+
+#products_main_pannel #products-list p{
+  bottom: 0;
+  right: 0;
+  margin-right: 5px;
+  color: black;
+}
+
+/*PRODUCT.HTML*/
+#product .wrapper {
+  float: right;
+  display: inline;
+  overflow: auto;
+}
+
+#product form p {
+  float: left;
+  display: inline;
+}
+
+/*CONTACT.HTML*/
+#contact .wrapper {
+  border: 1px solid #999999 ;
+  border-radius: 4px;
+  overflow: auto;
+  padding: 100px;
+}
+
+/*SHOPPING-CART.HTML*/
+#shopping-cart table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border-bottom: 1px solid black;
+}
+
+#shopping-cart thead {
+  border-bottom: 1px solid black;
+}
+
+#shopping-cart thead th:nth-child(1) {
+  width: 30px;
+}
+
+#shopping-cart thead th:nth-child(2), tbody td:nth-child(2) {
+  text-align: left;
+  width: 20%;
+}
+
+#shopping-cart thead th:nth-child(3), tbody td:nth-child(3) {
+  text-align: center;
+  width: 20%;
+}
+
+#shopping-cart thead th:nth-child(4), tbody td:nth-child(4) {
+  text-align: center;
+  width: 20%;
+}
+
+#shopping-cart thead th:nth-child(5), tbody td:nth-child(5) {
+  text-align: right;
+  width: 20%;
+}
+
+#shopping-cart th, td {
+  padding: 20px;
+}
+
+#shopping-cart table button {
+  width: 100%;
+  max-width: 20px;
+  border-radius: 50%;
+  border: 1px solid #dddddd;
+  background: #dddddd;
+}
+
+#shopping-cart table button:hover {
+  border: 1px solid #bbbbbb;
+  background: #bbbbbb;
+}
+
+#shopping-cart p {
+  text-align: right;
+}
+
+#shopping-cart a.button {
+  float: right;
+}
+
+/*ORDER.HTML*/
+#order form button{
+  float:right;
+}
+
+#order form input{
+  width:95%;
+}
+
+/*CONFIRMATION.HTML*/
+
+/* COLUMN CLASS */
+[class*="col-"] {
+  float: left;
+}
+.col-1 {width: 50%;}
+.col-2 {width: 33.33%; text-align:center; font-size:16px;}
+
+/* FORM STYLE */
+form .form-control {
+  padding: 8px;
+  border: 1px solid #999999 ;
+  border-radius: 4px;
+}
+
+/* BUTTON STYLE */
+.button {
+  margin-top: 10px;
+  background-color: #14597f;
+  border-color: #0b2d3d;
+  color: white;
+  border: 1px;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  transition-property: background-color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
+}
+
+.button:hover{
+  background-color: #1fb5e9;
+}
