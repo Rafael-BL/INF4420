@@ -31,24 +31,25 @@
 	</nav>
   </header>
 	
-  <main>
+  <main id=shopping-cart>
+  <br>
     <section>
     <h1>Panier</h1>
       <!-- PANIER DE COMMANDE -->
       <table>
-	    <thead>
-          <tr>
-            <th></th>
-            <th>Produit</th> 
-            <th>Prix unitaire</th>
-            <th>Quantité</th>
-            <th>Prix</th>
-          </tr>
-		</thead>
+        <thead>
+            <tr>
+              <th></th>
+              <th>Produit</th> 
+              <th>Prix unitaire</th>
+              <th>Quantité</th>
+              <th>Prix</th>
+            </tr>
+        </thead>
 		
-		<tbody>
+        <tbody>
           <tr>
-            <td><button>X</button></td>
+            <td><button>x</button></td>
             <td><a href="./product.html">Apple TV</a></td> 
             <td>249.99 $</td>
             <td>
@@ -60,7 +61,7 @@
           </tr>
 		
           <tr>
-            <td><button>X</button></td>
+            <td><button>x</button></td>
             <td><a href="./product.html">Canon EOS 5D Mark II</a></td> 
             <td>2999.99 $</td>
             <td>
@@ -72,7 +73,7 @@
           </tr>
 		
           <tr>
-            <td><button>X</button></td>
+            <td><button>x</button></td>
             <td><a href="./product.html">Nikon D7000</a></td> 
             <td>549.99 $</td>
             <td>
@@ -82,12 +83,11 @@
             </td>
             <td>1099.98 $</td>
           </tr>
-        <tbody>
+        </tbody>
       </table>
-	  
       <p>Total: 4599.95 $</p>
-      <button type="reset">Vider le panier</button>
-      <a href="order.html">Commander</a>
+      <button class="button" type="reset">Vider le panier</button>
+      <a class="button" href="order.html">Commander</a>
     </section>
   </main>
 
