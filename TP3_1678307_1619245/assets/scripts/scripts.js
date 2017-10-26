@@ -240,17 +240,31 @@ $(document).ready(function () {
         return decodeURI(results[1]) || 0;
       }
     }
+	
   var product_id = $.urlParam('id');
   
-  //Function to display a specific item
-  console.log(product_id);
-  function display_product (product_id) {
-    var html_product = [];
-	html_product += '<h1>'+data[product_id].name+'</h1>';
-    $('#product').html(html_product);
-  }
+  $.each(data, function(key, value){
+    //Check for validity of id
+	if(value.id == product_id) {
+	  $('.row').show();
+      $('#product-name').text(data[product_id - 1].name);
+      $('#product-image').attr('src', "./assets/img/"+data[product_id - 1].image);
+      $('#product-desc').text(data[product_id - 1].description);
+      $('#product-features').empty();
+      for(i = 0; i  < data[product_id - 1].features.length; i++) {
+        $('#product-features').append('<li>'+data[product_id - 1].features[i]+'</li>');
+      }
+      $('#product-price').text(data[product_id - 1].price);
+	  return false;
+	}
+	else {
+	  $('#product-name').text('Page non trouvée!');
+	  $('.row').hide();
+	}
+  });
+	
+
   
-  display_product(product_id);
   
  /* //Display correct product depending on its id
   switch(product_id) {
