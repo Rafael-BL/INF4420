@@ -28,6 +28,7 @@ else {
 //Function to display products depending on current criteria and category
 var categorie = "tous_les_produits";
 var criteria = "bas-haut";
+var product_count = 0;
 function add_to_product_list (data, categorie, criteria) {
 	//Sort the data depending on selected criteria
 	switch(criteria) {
@@ -69,14 +70,12 @@ function add_to_product_list (data, categorie, criteria) {
 	//Display the data depending on criteria and categorie
 	switch(categorie) {
     case "appareils_photo":
-	var product_count = 0;
+	product_count = 0;
 	var html_product_list = [];
 	  $.each(data, function(key, value){
       if(value.category == "cameras") {
-		console.log(value.id);
-		var 
         html_product_list += '<div class="product">';
-	    html_product_list += '<a href="./product.html?id" value.category>';
+	    html_product_list += '<a href=./product.html?id='+value.id+'>';
 	    html_product_list += '<h2>'+value.name+'</h2>';
 	    html_product_list += '<img alt='+value.name+' src="./assets/img/'+value.image+'">';
 	    html_product_list += '<p><small>Prix</small> '+value.price+'&thinsp;$</p>';
@@ -84,18 +83,17 @@ function add_to_product_list (data, categorie, criteria) {
 	    html_product_list += '</div>';
 		product_count++;
 	  }
-	  console.log(html_product_list);
       });
     $('#products-list').html(html_product_list); 
       break;
 	  
     case "consoles":
-	var product_count = 0;
+	product_count = 0;
 	var html_product_list = [];
 	  $.each(data, function(key, value){
       if(value.category == "consoles") {
         html_product_list += '<div class="product">';
-	    html_product_list += '<a href="./product.html" title="En savoir plus...">';
+	    html_product_list += '<a href=./product.html?id='+value.id+'>';
 	    html_product_list += '<h2>'+value.name+'</h2>';
 	    html_product_list += '<img alt='+value.name+' src="./assets/img/'+value.image+'">';
 	    html_product_list += '<p><small>Prix</small> '+value.price+'&thinsp;$</p>';
@@ -108,12 +106,12 @@ function add_to_product_list (data, categorie, criteria) {
       break;
 	  
 	case "ecrans":
-	var product_count = 0;
+	product_count = 0;
 	var html_product_list = [];
 	  $.each(data, function(key, value){
       if(value.category == "screens") {
         html_product_list += '<div class="product">';
-	    html_product_list += '<a href="./product.html" title="En savoir plus...">';
+	    html_product_list += '<a href=./product.html?id='+value.id+'>';
 	    html_product_list += '<h2>'+value.name+'</h2>';
 	    html_product_list += '<img alt='+value.name+' src="./assets/img/'+value.image+'">';
 	    html_product_list += '<p><small>Prix</small> '+value.price+'&thinsp;$</p>';
@@ -126,12 +124,12 @@ function add_to_product_list (data, categorie, criteria) {
 	  break;
 	  
 	case "ordinateurs":
-	var product_count = 0;
+	product_count = 0;
 	var html_product_list = [];
 	  $.each(data, function(key, value){
       if(value.category == "computers") {
         html_product_list += '<div class="product">';
-	    html_product_list += '<a href="./product.html" title="En savoir plus...">';
+	    html_product_list += '<a href=./product.html?id='+value.id+'>';
 	    html_product_list += '<h2>'+value.name+'</h2>';
 	    html_product_list += '<img alt='+value.name+' src="./assets/img/'+value.image+'">';
 	    html_product_list += '<p><small>Prix</small> '+value.price+'&thinsp;$</p>';
@@ -144,11 +142,11 @@ function add_to_product_list (data, categorie, criteria) {
       break;
 
 	case "tous_les_produits":
-	var product_count = 0;
+	product_count = 0;
 	var html_product_list = [];
       $.each(data, function(key, value){
         html_product_list += '<div class="product">';
-        html_product_list += '<a href="./product.html" title="En savoir plus...">';
+	    html_product_list += '<a href=./product.html?id='+value.id+'>';
 	    html_product_list += '<h2>'+value.name+'</h2>';
 	    html_product_list += '<img alt='+value.name+' src="./assets/img/'+value.image+'">';
 	    html_product_list += '<p><small>Prix</small> '+value.price+'&thinsp;$</p>';
@@ -159,7 +157,6 @@ function add_to_product_list (data, categorie, criteria) {
       $('#products-list').html(html_product_list);
       break;
 	}	  
-	document.getElementById('products-count').innerHTML = product_count; 
 }
 
 $(document).ready(function () {
@@ -167,37 +164,42 @@ $(document).ready(function () {
 	//Initial load on document ready (prix bas-haut par défaut)
     add_to_product_list(data, categorie, criteria);
 
-  //3.3.2.2
+  //3.3.2
   //Categorie buttons
   $("#appareils_photo").click(function() {
 	categorie = "appareils_photo";  
 	add_to_product_list(data, categorie, criteria);
     $(this).siblings().removeClass('selected')
     $(this).addClass('selected');
+	document.getElementById('products-count').innerHTML = product_count; 
   })
   $("#consoles").click(function() {
 	categorie = "consoles";  
 	add_to_product_list(data, categorie, criteria);
     $(this).siblings().removeClass('selected')
     $(this).addClass('selected');
+	document.getElementById('products-count').innerHTML = product_count; 
   });	
   $("#ecrans").click(function() {
 	categorie = "ecrans";  
 	add_to_product_list(data, categorie, criteria);
     $(this).siblings().removeClass('selected')
     $(this).addClass('selected');
+	document.getElementById('products-count').innerHTML = product_count; 
   });	
   $("#ordinateurs").click(function() {
 	categorie = "ordinateurs";  
 	add_to_product_list(data, categorie, criteria);
     $(this).siblings().removeClass('selected')
     $(this).addClass('selected');
+	document.getElementById('products-count').innerHTML = product_count; 
   });	
   $("#tous_les_produits").click(function() {
 	categorie = "tous_les_produits";  
 	add_to_product_list(data, categorie, criteria);
     $(this).siblings().removeClass('selected')
     $(this).addClass('selected');
+	document.getElementById('products-count').innerHTML = product_count; 
   });	
   
   //Criteria buttons  
@@ -225,5 +227,90 @@ $(document).ready(function () {
     $(this).siblings().removeClass('selected')
     $(this).addClass('selected');
   });    
+  
+  
+  //3.3.3 Page d'un produit (product.html)
+  //Function to get URL param id
+  $.urlParam = function(name){
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+      if (results==null){
+         return null;
+      }
+      else{
+        return decodeURI(results[1]) || 0;
+      }
+    }
+  var product_id = $.urlParam('id');
+  
+  //Function to display a specific item
+  console.log(product_id);
+  function display_product (product_id) {
+    var html_product = [];
+	html_product += '<h1>'+data[product_id].name+'</h1>';
+    $('#product').html(html_product);
+  }
+  
+  display_product(product_id);
+  
+ /* //Display correct product depending on its id
+  switch(product_id) {
+	case "1":
+      html_product += '<h1>'+data[0].name+'</h1>';
+      $('#product').html(html_product);
+	  console.log(data);
+	  console.log(data[0].name);
+      break;
+	  
+    case 2:
+	  console.log(product_id);
+      break;
+	  
+	case 3:
+	  console.log(product_id);
+	  break;
+	  
+	case 4:
+	  console.log(product_id);
+      break;
+    case 5:
+	  console.log(product_id);
+      break;
+	  
+    case 6:
+	  console.log(product_id);
+      break;
+	  
+	case 7:
+	  console.log(product_id);
+	  break;
+	  
+	case 8:
+	  console.log(product_id);
+      break;
+	  
+    case 9:
+	  console.log(product_id);
+      break;
+	  
+    case 10:
+	  console.log(product_id);
+      break;
+	  
+	case 11:
+	  console.log(product_id);
+	  break;
+	  
+	case 12:
+	  console.log(product_id);
+      break;
+	  
+	case 13:
+	  console.log(product_id);
+      break;
+  } */ 
+
   });
+  
+
+	
 });
