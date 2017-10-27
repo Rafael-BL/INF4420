@@ -1,34 +1,31 @@
-// Check browser support
-if (typeof(Storage) !== "undefined") {
-  //Store Content of shoppingCart in local storage
-  var shoppingCart = {
-	  1: 3,
-	  2: 4,
-	  5: 3,
-	  4: 5
-  };
-  localStorage.setItem("shopping-cart", JSON.stringify(shoppingCart));
-} 
-else {
-  document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
-}
-
-//3.3.1: Entête
-if(Object.keys(shoppingCart).length == 0) {
-  $(function() {
-    $("span.count").hide();
-  });
-}
-else {
-  $(function() {
-    $("span.count").html(Object.keys(shoppingCart).length);
-  });
-}
-
-//Function to display products depending on current criteria and category
+//GLOBAL VARIABLES
+var shoppingCart = {};
 var categorie = "tous_les_produits";
 var criteria = "bas-haut";
 var product_count = 0;
+
+//GLOBAL FUNCTIONS
+$.init = function() {
+  if (JSON.parse(localStorage.getItem("shopping-cart")) == null) {
+    localStorage.setItem("shopping-cart", JSON.stringify(shoppingCart));
+  } 
+}
+//Update cart badge
+function updateCartBadge() {
+  var obj = JSON.parse(localStorage.getItem("shopping-cart"));
+  var length = Object.keys(obj).length;
+  if(length == 0) {
+	$(function() {
+      $("span.count").hide();
+    });
+  }
+  else {
+    $(function() {
+      $("span.count").html(Object.keys(obj).length);
+    });	  
+  }
+}
+//Function to display products depending on current criteria and category
 function add_to_product_list (data, categorie, criteria) {
 	//Sort the data depending on selected criteria
 	switch(criteria) {
@@ -158,13 +155,49 @@ function add_to_product_list (data, categorie, criteria) {
       break;
 	}	  
 }
-
+//3.3.3 Page d'un produit (product.html)
+//Function to get URL param id
+$.urlParam = function(name){
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+      if (results==null){
+         return null;
+      }
+      else{
+        return decodeURI(results[1]) || 0;
+      }
+    }
+function update_product(product_id, data) {
+  if(product_id != null) {
+    $.each(data, function(key, value){
+      //Check for validity of id
+	  if(value.id == product_id) {
+	    $('#product_no_title').show();
+        $('#product-name').text(data[product_id - 1].name);
+        $('#product-image').attr('src', "./assets/img/"+data[product_id - 1].image);
+        $('#product-desc').text(data[product_id - 1].description);
+        $('#product-features').empty();
+        for(i = 0; i  < data[product_id - 1].features.length; i++) {
+          $('#product-features').append('<li>'+data[product_id - 1].features[i]+'</li>');
+        }
+        $('#product-price').text(data[product_id - 1].price);
+	    return false;
+	  }
+	  else {
+	    $('#product-name').text('Page non trouvée!');
+	    $('#product_no_title').hide();
+	  }
+    });
+  }
+}
+	
+	
 $(document).ready(function () {
+  $.init();
+  updateCartBadge();
   $.getJSON("http://localhost:8000/data/products.json", function (data) {
-	//Initial load on document ready (prix bas-haut par défaut)
-    add_to_product_list(data, categorie, criteria);
-
-  //3.3.2
+  //Set the default page for products (all products and low-high
+  add_to_product_list(data, categorie, criteria);
+	
   //Categorie buttons
   $("#appareils_photo").click(function() {
 	categorie = "appareils_photo";  
@@ -228,103 +261,33 @@ $(document).ready(function () {
     $(this).addClass('selected');
   });    
   
-  
-  //3.3.3 Page d'un produit (product.html)
-  //Function to get URL param id
-  $.urlParam = function(name){
-    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-      if (results==null){
-         return null;
-      }
-      else{
-        return decodeURI(results[1]) || 0;
-      }
-    }
-	
+  //Update product page with url id
   var product_id = $.urlParam('id');
+  update_product(product_id, data);
   
-  $.each(data, function(key, value){
-    //Check for validity of id
-	if(value.id == product_id) {
-	  $('.row').show();
-      $('#product-name').text(data[product_id - 1].name);
-      $('#product-image').attr('src', "./assets/img/"+data[product_id - 1].image);
-      $('#product-desc').text(data[product_id - 1].description);
-      $('#product-features').empty();
-      for(i = 0; i  < data[product_id - 1].features.length; i++) {
-        $('#product-features').append('<li>'+data[product_id - 1].features[i]+'</li>');
-      }
-      $('#product-price').text(data[product_id - 1].price);
-	  return false;
+  //Check if an item was added to the cart
+   $("#add-to-cart-form button").click(function(event) {
+	event.preventDefault();	
+	shoppingCart = JSON.parse(localStorage.getItem("shopping-cart"));
+	var quantity = $("#product-quantity").val();
+    if(product_id in shoppingCart) { 
+	  shoppingCart[product_id] += Number(quantity);
 	}
 	else {
-	  $('#product-name').text('Page non trouvée!');
-	  $('.row').hide();
+	  shoppingCart[product_id] = Number(quantity);
 	}
-  });
+	localStorage.setItem("shopping-cart", JSON.stringify(shoppingCart));
+	updateCartBadge();
 	
-
-  
-  
- /* //Display correct product depending on its id
-  switch(product_id) {
-	case "1":
-      html_product += '<h1>'+data[0].name+'</h1>';
-      $('#product').html(html_product);
-	  console.log(data);
-	  console.log(data[0].name);
-      break;
-	  
-    case 2:
-	  console.log(product_id);
-      break;
-	  
-	case 3:
-	  console.log(product_id);
-	  break;
-	  
-	case 4:
-	  console.log(product_id);
-      break;
-    case 5:
-	  console.log(product_id);
-      break;
-	  
-    case 6:
-	  console.log(product_id);
-      break;
-	  
-	case 7:
-	  console.log(product_id);
-	  break;
-	  
-	case 8:
-	  console.log(product_id);
-      break;
-	  
-    case 9:
-	  console.log(product_id);
-      break;
-	  
-    case 10:
-	  console.log(product_id);
-      break;
-	  
-	case 11:
-	  console.log(product_id);
-	  break;
-	  
-	case 12:
-	  console.log(product_id);
-      break;
-	  
-	case 13:
-	  console.log(product_id);
-      break;
-  } */ 
-
+	$(function() {
+      $("#dialog").css("visibility", "visible");
+    });
+	setTimeout(function() {
+      $("#dialog").css("visibility", "hidden");
+    }, 5000);
   });
-  
-
-	
+  });	
 });
+
+
+    
