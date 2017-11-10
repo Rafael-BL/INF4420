@@ -1,0 +1,41 @@
+html
+	head
+		meta(charset='UTF-8')
+		title OnlineShop
+		block style
+			link(rel='stylesheet', type='text/css', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+			link(rel='stylesheet', type='text/css', href='css/style.css')
+		
+		block scripts
+			script(type='text/javascript', src='js/jquery-3.2.1.min.js')
+			script(type='text/javascript', src='scripts/utils.js')
+			script(type='text/javascript', src='scripts/shopping-cart.service.js')
+			script(type='text/javascript', src='scripts/shopping-cart.controller.js')
+
+	body
+		block header
+			header
+				.header-container
+					.logo
+						a(href="./accueil")
+							img(alt="logo", src="/img/logo.svg", title="Accueil")
+					nav
+						ul
+							li.active
+								a(href="/accueil") Accueil
+							li
+								a(href="/api/products") Produits
+							li
+								a(href="/contact") Contact
+							li
+								a.shopping-cart(href="/panier", title="Panier")
+									span.fa-stack.fa-lg
+										i.fa.fa-circle.fa-stack-2x.fa-inverse
+										i.fa.fa-shopping-cart.fa-stack-1x
+									span.count 3
+	
+		block content
+	
+		block footer
+			footer
+				p Par Antoine Béland et Konstantinos Lambrou-Latreille
